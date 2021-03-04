@@ -1,9 +1,10 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
+import styles from './Button.module.css';
 
 const Button = ({ fetchImages }) => {
   return (
-    <button type="button" onClick={fetchImages}>
+    <button type="button" onClick={fetchImages} className={styles.Button}>
       {' '}
       Load more
     </button>

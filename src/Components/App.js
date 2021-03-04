@@ -3,7 +3,7 @@ import Searchbar from './Searchbar';
 import ImageGallery from './ImageGallery';
 import Button from './Button';
 import imagesApi from '../services/imagesApi';
-// import './styles.css';
+import '../styles.css';
 
 class App extends Component {
   state = {
@@ -51,7 +51,7 @@ class App extends Component {
     const { images, isLoading, error } = this.state;
     const shouldRenderLoadMoreButton = images.length > 0 && !isLoading;
     return (
-      <>
+      <div className="App">
         {error && (
           <h1>Your request cannot be executed. Please, try again...</h1>
         )}
@@ -61,7 +61,7 @@ class App extends Component {
         {shouldRenderLoadMoreButton && (
           <Button fetchImages={this.fetchImages} />
         )}
-      </>
+      </div>
     );
   }
 }
