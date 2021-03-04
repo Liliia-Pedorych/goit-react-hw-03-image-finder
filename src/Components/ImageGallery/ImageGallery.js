@@ -1,13 +1,19 @@
-//import React from 'react';
+import React from 'react';
 // import PropTypes from 'prop-types';
-// import ImageGalleryItem from "./ImageGalleryItem";
+import ImageGalleryItem from '../ImageGalleryItem';
 
-// const ImageGallery = () => {
-//   return (
-//     <ul className="ImageGallery">
-//       <ImageGalleryItem />
-//     </ul>
-//   );
-// };
+const ImageGallery = ({ images }) => {
+  return (
+    <ul className="ImageGallery">
+      {images.map(({ id, webformatURL, type, tags }) => (
+        <ImageGalleryItem
+          key={id}
+          url={webformatURL}
+          type={`${type} ${tags}`}
+        />
+      ))}
+    </ul>
+  );
+};
 
-// export default ImageGallery;
+export default ImageGallery;
