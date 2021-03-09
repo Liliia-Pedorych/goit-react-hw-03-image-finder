@@ -3,14 +3,16 @@ import React from 'react';
 import ImageGalleryItem from '../ImageGalleryItem';
 import styles from './ImageGallery.module.css';
 
-const ImageGallery = ({ images }) => {
+const ImageGallery = ({ images, onClick }) => {
   return (
     <ul className={styles.ImageGallery}>
-      {images.map(({ id, webformatURL, type, tags }) => (
+      {images.map(({ id, webformatURL, type, tags, largeImageURL }) => (
         <ImageGalleryItem
           key={id}
           url={webformatURL}
           type={`${type} ${tags}`}
+          modalUrl={largeImageURL}
+          onClick={onClick}
         />
       ))}
     </ul>

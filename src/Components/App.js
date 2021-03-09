@@ -3,6 +3,8 @@ import Searchbar from './Searchbar';
 import ImageGallery from './ImageGallery';
 import Button from './Button';
 import imagesApi from '../services/imagesApi';
+import Modal from './Modal';
+
 import '../styles.css';
 
 class App extends Component {
@@ -12,6 +14,8 @@ class App extends Component {
     searchQuery: '',
     isLoading: false,
     error: null,
+    showModal: false,
+    largeImageURL: '',
   };
 
   componentDidUpdate(prevPrors, prevState) {
@@ -27,6 +31,13 @@ class App extends Component {
       page: 1,
       error: null,
     });
+  };
+
+  toggleModal = (url = '') => {
+    this.setState(({ showModal }) => ({
+      showModal: !showModal,
+      largeImageURL: url,
+    }));
   };
 
   fetchImages = () => {
@@ -48,15 +59,22 @@ class App extends Component {
   };
 
   render() {
-    const { images, isLoading, error } = this.state;
+    const { images, isLoading, error, showModal, largeImageURL } = this.state;
     const shouldRenderLoadMoreButton = images.length > 0 && !isLoading;
     return (
       <div className="App">
         {error && (
           <h1>Your request cannot be executed. Please, try again...</h1>
         )}
+        {showModal && (
+          <Modal onClick={this.toggleModal}>
+            <img src={largeImageURL} alt="" />
+          </Modal>
+        )}
         <Searchbar onSubmit={this.onChangeSearchQuery} />
-        <ImageGallery images={images} />
+        {images.length > 0 && (
+          <ImageGallery images={images} onClick={this.toggleModal} />
+        )}
         {isLoading && <h1>Loading...</h1>}
         {shouldRenderLoadMoreButton && (
           <Button fetchImages={this.fetchImages} />
