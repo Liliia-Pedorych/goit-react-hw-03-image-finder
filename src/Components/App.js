@@ -4,6 +4,7 @@ import ImageGallery from './ImageGallery';
 import Button from './Button';
 import imagesApi from '../services/imagesApi';
 import Modal from './Modal';
+import Load from './Loader';
 
 import '../styles.css';
 
@@ -75,7 +76,7 @@ class App extends Component {
         {images.length > 0 && (
           <ImageGallery images={images} onClick={this.toggleModal} />
         )}
-        {isLoading && <h1>Loading...</h1>}
+        {isLoading && <Load />}
         {shouldRenderLoadMoreButton && (
           <Button fetchImages={this.fetchImages} />
         )}

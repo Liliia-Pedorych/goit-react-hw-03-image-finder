@@ -1,8 +1,9 @@
-// import React from 'react';
-// import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import Loader from 'react-loader-spinner';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
-// const Loader = () => {
-//
-// };
-
-// export default Loader;
+export default class Load extends Component {
+  render() {
+    return <Loader type="Circles" color="#00BFFF" height={200} width={200} />;
+  }
+}
