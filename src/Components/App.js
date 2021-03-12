@@ -23,6 +23,15 @@ class App extends Component {
     if (prevState.searchQuery !== this.state.searchQuery) {
       this.fetchImages();
     }
+    if (
+      prevState.images.length !== 0 &&
+      prevState.images !== this.state.images
+    ) {
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: 'smooth',
+      });
+    }
   }
 
   onChangeSearchQuery = query => {
