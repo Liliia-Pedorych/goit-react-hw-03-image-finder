@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Searchbar from './Searchbar';
 import ImageGallery from './ImageGallery';
 import Button from './Button';
-import imagesApi from '../services/imagesApi';
+import getImages from '../services/imagesApi';
 import Modal from './Modal';
 import Load from './Loader';
 
@@ -56,8 +56,7 @@ class App extends Component {
 
     this.setState({ isLoading: true });
 
-    imagesApi
-      .fetchImages(options)
+    getImages(options)
       .then(images => {
         this.setState(prevState => ({
           images: [...prevState.images, ...images],
