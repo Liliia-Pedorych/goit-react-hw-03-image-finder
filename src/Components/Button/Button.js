@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import styles from './Button.module.css';
 
 const Button = ({ fetchImages }) => {
@@ -13,7 +13,6 @@ const Button = ({ fetchImages }) => {
 
 export default Button;
 
-// window.scrollTo({
-//   top: document.documentElement.scrollHeight,
-//   behavior: 'smooth',
-// });
+Button.propTypes = {
+  fetchImages: PropTypes.func.isRequired,
+};

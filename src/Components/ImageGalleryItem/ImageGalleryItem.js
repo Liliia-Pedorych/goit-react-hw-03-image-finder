@@ -1,5 +1,6 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import defaultImage from '../../images/default.jpg';
 import styles from './ImageGaleryItem.module.css';
 
 const ImageGalleryItem = ({ url, type, modalUrl, onClick }) => {
@@ -11,3 +12,16 @@ const ImageGalleryItem = ({ url, type, modalUrl, onClick }) => {
 };
 
 export default ImageGalleryItem;
+
+ImageGalleryItem.defaultProps = {
+  url: defaultImage,
+  modalUrl: defaultImage,
+  type: 'photo',
+};
+
+ImageGalleryItem.propTypes = {
+  url: PropTypes.string,
+  type: PropTypes.string,
+  modalUrl: PropTypes.string,
+  onClick: PropTypes.func.isRequired,
+};
